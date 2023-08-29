@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BookMe.Domain\BookMe.Domain.csproj" />
+    <ProjectReference Include="..\..\src\BookMe.Domain\BookMe.Domain.csproj" />
   </ItemGroup>
 
 </Project>
