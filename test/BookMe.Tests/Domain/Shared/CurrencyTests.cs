@@ -1,6 +1,6 @@
-﻿using BookMe.Domain.Apartments;
+﻿using BookMe.Domain.Shared;
 
-namespace BookMe.Tests.Domain.Apartments
+namespace BookMe.Tests.Domain.Shared
 {
     public class CurrencyTests
     {

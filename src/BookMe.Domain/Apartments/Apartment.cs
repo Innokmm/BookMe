@@ -1,4 +1,5 @@
 ﻿using BookMe.Domain.Abstractions;
+using BookMe.Domain.Shared;
 
 namespace BookMe.Domain.Apartments;
 
@@ -9,7 +10,7 @@ public sealed class Apartment : Entity
         Description description, 
         Address address, 
         Money price, 
-        Money cleaning, 
+        Money cleaningFee, 
         DateTime? lastBookedOnUtc,
         List<Amenity> amenities) 
         : base(id)
@@ -18,7 +19,7 @@ public sealed class Apartment : Entity
         Description = description;
         Address = address;
         Price = price;
-        Cleaning = cleaning;
+        CleaningFee = cleaningFee;
         LastBookedOnUtc = lastBookedOnUtc;
         Amenities = amenities;
     }
@@ -27,7 +28,7 @@ public sealed class Apartment : Entity
     public Description Description { get; private set; }
     public Address Address { get; private set; }
     public Money Price { get; private set; }
-    public Money Cleaning { get; private set; }
-    public DateTime? LastBookedOnUtc { get; private set; }
+    public Money CleaningFee { get; private set; }
+    public DateTime? LastBookedOnUtc { get; internal set; }
     public List<Amenity> Amenities { get; private set; }
 }

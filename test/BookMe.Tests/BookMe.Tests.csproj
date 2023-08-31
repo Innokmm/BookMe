@@ -26,4 +26,8 @@
     <ProjectReference Include="..\..\src\BookMe.Domain\BookMe.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Apartments\" />
+  </ItemGroup>
+
 </Project>

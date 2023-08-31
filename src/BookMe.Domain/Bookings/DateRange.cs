@@ -8,8 +8,8 @@ public record DateRange
         End = end;
     }
 
-    private DateOnly Start { get; }
-    private DateOnly End { get; }
+    public DateOnly Start { get; }
+    public DateOnly End { get; }
 
     public int LengthInDays => End.DayNumber - Start.DayNumber;
 

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.Domain", "src\BookMe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookMe.Tests", "test\BookMe.Tests\BookMe.Tests.csproj", "{0127B3B7-FBA0-4879-9E0D-DA110D3FF33B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookMe.Application", "BookMe.Application\BookMe.Application.csproj", "{7337644F-A761-4987-8814-45C233002F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{0127B3B7-FBA0-4879-9E0D-DA110D3FF33B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0127B3B7-FBA0-4879-9E0D-DA110D3FF33B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0127B3B7-FBA0-4879-9E0D-DA110D3FF33B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7337644F-A761-4987-8814-45C233002F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7337644F-A761-4987-8814-45C233002F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7337644F-A761-4987-8814-45C233002F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7337644F-A761-4987-8814-45C233002F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B05A6FFC-62AF-4D79-9B70-FDAE8AEAB1C1} = {B2596A47-6357-40BC-BBCD-625798DAAB2B}
 		{0127B3B7-FBA0-4879-9E0D-DA110D3FF33B} = {7C2E4A4C-E9EC-49BF-B535-07B03720721C}
+		{7337644F-A761-4987-8814-45C233002F4A} = {B2596A47-6357-40BC-BBCD-625798DAAB2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F252407F-FDB5-4C3A-A306-1538CF2627EC}

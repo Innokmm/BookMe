@@ -1,4 +1,4 @@
-﻿namespace BookMe.Domain.Apartments;
+﻿namespace BookMe.Domain.Shared;
 
 public record Currency
 {

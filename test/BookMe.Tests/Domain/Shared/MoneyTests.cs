@@ -1,6 +1,6 @@
-﻿using BookMe.Domain.Apartments;
+﻿using BookMe.Domain.Shared;
 
-namespace BookMe.Tests.Domain.Apartments;
+namespace BookMe.Tests.Domain.Shared;
 
 public class MoneyTests
 {
@@ -40,7 +40,7 @@ public class MoneyTests
         new List<object[]>
         {
             new object[] { 0, 1, Currency.Usd },
-            new object[] { 1, 1, Currency.Usd },
-            new object[] { 1, 1, Currency.Eur }
+            new object[] { 0.03, 0.01, Currency.Usd },
+            new object[] { 0.01, 0.02, Currency.Eur }
         };
 }
