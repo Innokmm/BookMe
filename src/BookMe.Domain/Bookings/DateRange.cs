@@ -15,9 +15,9 @@ public record DateRange
 
     public static DateRange Create(DateOnly start, DateOnly end)
     {
-        if (start > end)
+        if (start >= end)
         {
-            throw new ApplicationException("Start date cannot be after end date");
+            throw new ApplicationException("End date must be after start date");
         }
 
         return new DateRange(start, end);

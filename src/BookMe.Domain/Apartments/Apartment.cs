@@ -9,8 +9,9 @@ public sealed class Apartment : Entity
         Name name, 
         Description description, 
         Address address, 
-        Money price, 
-        Money cleaningFee, 
+        decimal price, 
+        decimal cleaningFee, 
+        Currency currency,
         DateTime? lastBookedOnUtc,
         List<Amenity> amenities) 
         : base(id)
@@ -18,8 +19,8 @@ public sealed class Apartment : Entity
         Name = name;
         Description = description;
         Address = address;
-        Price = price;
-        CleaningFee = cleaningFee;
+        Price = new Money(price, currency);
+        CleaningFee = new Money(cleaningFee, currency);
         LastBookedOnUtc = lastBookedOnUtc;
         Amenities = amenities;
     }
