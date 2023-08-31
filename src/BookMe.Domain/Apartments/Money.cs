@@ -2,13 +2,15 @@
 
 public record Money(decimal Amount, Currency Currency)
 {
-    public static Money operator +(Money a, Money b)
+    public static Money operator +(Money first, Money second)
     {
-        if (a.Currency != b.Currency)
+        if (first.Currency != second.Currency)
         {
             throw new InvalidOperationException("Currencies are different");
         }
 
-        return new Money(a.Amount + b.Amount, a.Currency);
+        return new Money(first.Amount + second.Amount, first.Currency);
     }
+
+    public static Money Zero = new(0, Currency.None);
 };

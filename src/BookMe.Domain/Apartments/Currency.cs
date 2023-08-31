@@ -2,6 +2,7 @@
 
 public record Currency
 {
+    internal static readonly Currency None = new("");
     public static readonly Currency Usd = new("Usd");
     public static readonly Currency Eur = new("Eur");
 
