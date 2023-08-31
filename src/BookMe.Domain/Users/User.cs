@@ -4,7 +4,7 @@ namespace BookMe.Domain.Users;
 
 public class User : Entity
 {
-    public User(Guid id, 
+    private User(Guid id, 
         FirstName firstName, 
         LastName lastName, 
         Email email) 
@@ -19,4 +19,13 @@ public class User : Entity
     public LastName LastName { get; private set; }
     public Email Email { get; private set; }
 
+    public static User Create(
+        FirstName firstName,
+        LastName lastName,
+        Email email)
+    {
+        var user = new User(new Guid(), firstName, lastName, email);
+
+        return user;
+    }
 }
