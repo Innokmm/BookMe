@@ -1,4 +1,5 @@
 ﻿using BookMe.Domain.Abstractions;
+using BookMe.Domain.Users.Events;
 
 namespace BookMe.Domain.Users;
 
@@ -25,6 +26,8 @@ public class User : Entity
         Email email)
     {
         var user = new User(new Guid(), firstName, lastName, email);
+
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 
         return user;
     }
