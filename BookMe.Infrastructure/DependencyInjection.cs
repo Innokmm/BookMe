@@ -2,6 +2,7 @@
 using BookMe.Application.Abstractions.Email;
 using BookMe.Infrastructure.Clock;
 using BookMe.Infrastructure.Email;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,15 @@ public static class DependencyInjection
     {
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddSingleton<IEmailService, EmailService>();
+
+        string connectionString = configuration.GetConnectionString("Database") ?? 
+            throw new ArgumentNullException(nameof(configuration));
+
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseNpgsql(connectionString)
+            .UseSnakeCaseNamingConvention();
+        });
 
         return services;
     }
