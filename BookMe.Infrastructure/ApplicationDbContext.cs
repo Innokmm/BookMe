@@ -1,4 +1,5 @@
-﻿using BookMe.Domain.Abstractions;
+﻿using BookMe.Application.Exceptions;
+using BookMe.Domain.Abstractions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,11 +22,18 @@ internal class ApplicationDbContext : DbContext, IUnitOfWork
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        int result = await base.SaveChangesAsync(cancellationToken);
+        try
+        {
+            int result = await base.SaveChangesAsync(cancellationToken);
 
-        await PublishDomainEventAsync();
+            await PublishDomainEventAsync();
 
-        return result;
+            return result;
+        }
+        catch (DbUpdateConcurrencyException ex)
+        {
+            throw new ConcurencyException("Concurrency exception occured.", ex);
+        }
     }
 
     private async Task PublishDomainEventAsync()

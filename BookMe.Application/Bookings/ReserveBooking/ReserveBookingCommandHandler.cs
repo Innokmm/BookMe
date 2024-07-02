@@ -1,5 +1,6 @@
 ﻿using BookMe.Application.Abstractions.Clock;
 using BookMe.Application.Abstractions.Messaging;
+using BookMe.Application.Exceptions;
 using BookMe.Domain.Abstractions;
 using BookMe.Domain.Apartments;
 using BookMe.Domain.Bookings;
@@ -34,35 +35,42 @@ public sealed class ReserveBookingCommandHandler : ICommandHandler<ReserveBookin
 
     public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
+        User? user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
         if (user is null)
         {
             return Result.Failure<Guid>(UserErrors.NotFound);
         }
 
-        var apartment = await _apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
+        Apartment? apartment = await _apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
         if (apartment is null)
         {
             return Result.Failure<Guid>(ApartmentErrors.NotFound);
         }
 
-        var duration = DateRange.Create(request.StartDate, request.EndDate);
+        DateRange duration = DateRange.Create(request.StartDate, request.EndDate);
         if (await _bookingRepository.IsOverlappingAsync(apartment, duration, cancellationToken))
         {
             return Result.Failure<Guid>(BookingErrors.Overlap);
         }
 
-        var booking = Booking.Reserve(
-            apartment,
-            user.Id,
-            duration,
-            _dateTimeProvider.UtcNow,
-            _pricingService);
+        try
+        {
+            Booking booking = Booking.Reserve(
+                apartment,
+                user.Id,
+                duration,
+                _dateTimeProvider.UtcNow,
+                _pricingService);
 
-        _bookingRepository.Add(booking);
+            _bookingRepository.Add(booking);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(booking.Id);
+            return Result.Success(booking.Id);
+        }
+        catch (ConcurencyException)
+        {
+            return Result.Failure<Guid>(BookingErrors.Overlap);
+        }
     }
 }
