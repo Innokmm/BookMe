@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  bookme.api:
+    image: ${DOCKER_REGISTRY-}bookmeapi
+    build:
+      context: .
+      dockerfile: src/BookMe.Api/Dockerfile

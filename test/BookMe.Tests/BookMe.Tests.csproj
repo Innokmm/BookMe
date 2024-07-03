@@ -25,12 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\BookMe.Application\BookMe.Application.csproj" />
-    <ProjectReference Include="..\..\src\BookMe.Domain\BookMe.Domain.csproj" />
+    <Folder Include="Domain\Apartments\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Apartments\" />
+    <ProjectReference Include="..\..\src\BookMe.Application\BookMe.Application.csproj" />
+    <ProjectReference Include="..\..\src\BookMe.Domain\BookMe.Domain.csproj" />
   </ItemGroup>
 
 </Project>

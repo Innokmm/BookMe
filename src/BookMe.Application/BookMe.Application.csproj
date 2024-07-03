@@ -12,13 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\BookMe.Domain\BookMe.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Abstractions\Messaging\" />
     <Folder Include="Abstractions\Data\" />
     <Folder Include="Bookings\GetBooking\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BookMe.Domain\BookMe.Domain.csproj" />
   </ItemGroup>
 
 </Project>
