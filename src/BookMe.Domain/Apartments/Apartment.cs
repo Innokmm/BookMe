@@ -5,6 +5,8 @@ namespace BookMe.Domain.Apartments;
 
 public sealed class Apartment : Entity
 {
+    private Apartment() { }
+
     public Apartment(Guid id, 
         Name name, 
         Description description, 
@@ -24,6 +26,8 @@ public sealed class Apartment : Entity
         LastBookedOnUtc = lastBookedOnUtc;
         Amenities = amenities;
     }
+
+
 
     public Name Name { get; private set; }    
     public Description Description { get; private set; }

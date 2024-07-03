@@ -1,3 +1,4 @@
+using BookMe.Api.Extensions;
 using BookMe.Application;
 using BookMe.Infrastructure;
 
@@ -16,6 +17,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

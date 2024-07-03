@@ -5,6 +5,8 @@ namespace BookMe.Domain.Users;
 
 public class User : Entity
 {
+    private User() { }
+
     private User(Guid id, 
         FirstName firstName, 
         LastName lastName, 
@@ -25,7 +27,7 @@ public class User : Entity
         LastName lastName,
         Email email)
     {
-        var user = new User(new Guid(), firstName, lastName, email);
+        User user = new User(new Guid(), firstName, lastName, email);
 
         user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 

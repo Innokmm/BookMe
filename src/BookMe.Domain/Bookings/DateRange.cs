@@ -2,6 +2,8 @@
 
 public record DateRange
 {
+    private DateRange() { }
+
     private DateRange(DateOnly start, DateOnly end)
     {
         Start = start;
