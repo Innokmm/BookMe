@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\BookMe.Application\BookMe.Application.csproj" />
+    <ProjectReference Include="..\BookMe.Infrastructure\BookMe.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
