@@ -3,6 +3,21 @@ version: '3.4'
 services:
   bookme.api:
     image: ${DOCKER_REGISTRY-}bookmeapi
+    container_name: BookMe.Api
     build:
       context: .
       dockerfile: src/BookMe.Api/Dockerfile
+    depends_on:
+      - bookme-db
+
+  bookme-db:
+    image: postgres:latest
+    container_name: BookMe.Db
+    environment:
+      - POSTGRES_DB=bookme
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
