@@ -414,6 +414,14 @@ namespace BookMe.Infrastructure.Migrations
                                 .HasColumnType("uuid")
                                 .HasColumnName("id");
 
+                            b1.Property<DateOnly>("End")
+                                .HasColumnType("date")
+                                .HasColumnName("duration_end");
+
+                            b1.Property<DateOnly>("Start")
+                                .HasColumnType("date")
+                                .HasColumnName("duration_start");
+
                             b1.HasKey("BookingId");
 
                             b1.ToTable("bookings");

@@ -2,26 +2,27 @@
 
 public record DateRange
 {
-    private DateRange() { }
-
-    private DateRange(DateOnly start, DateOnly end)
+    private DateRange()
     {
-        Start = start;
-        End = end;
     }
 
-    public DateOnly Start { get; }
-    public DateOnly End { get; }
+    public DateOnly Start { get; init; }
+
+    public DateOnly End { get; init; }
 
     public int LengthInDays => End.DayNumber - Start.DayNumber;
 
     public static DateRange Create(DateOnly start, DateOnly end)
     {
-        if (start >= end)
+        if (start > end)
         {
-            throw new ApplicationException("End date must be after start date");
+            throw new ApplicationException("End date precedes start date");
         }
 
-        return new DateRange(start, end);
+        return new DateRange
+        {
+            Start = start,
+            End = end
+        };
     }
 }

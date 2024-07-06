@@ -57,6 +57,8 @@ namespace BookMe.Infrastructure.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     apartment_id = table.Column<Guid>(type: "uuid", nullable: false),
                     user_id = table.Column<Guid>(type: "uuid", nullable: false),
+                    duration_start = table.Column<DateOnly>(type: "date", nullable: false),
+                    duration_end = table.Column<DateOnly>(type: "date", nullable: false),
                     price_for_period_amount = table.Column<decimal>(type: "numeric", nullable: false),
                     price_for_period_currency = table.Column<string>(type: "text", nullable: false),
                     cleaning_fee_amount = table.Column<decimal>(type: "numeric", nullable: false),

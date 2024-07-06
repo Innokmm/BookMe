@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 namespace BookMe.Api.Extensions;
+
+using BookMe.Api.Middleware;
 using BookMe.Infrastructure;
 
 public static class ApplicationBuilderExtensions
@@ -13,8 +15,8 @@ public static class ApplicationBuilderExtensions
         dbContext.Database.Migrate();
     }
 
-    //public static void UseCustomExceptionHandler(this IApplicationBuilder app)
-    //{
-    //    app.UseMiddleware<ExceptionHandlingMiddleware>();
-    //}
+    public static void UseCustomExceptionHandler(this IApplicationBuilder app)
+    {
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
+    }
 }

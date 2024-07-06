@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookMe.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240703063739_Create_Database")]
+    [Migration("20240703095109_Create_Database")]
     partial class Create_Database
     {
         /// <inheritdoc />
@@ -416,6 +416,14 @@ namespace BookMe.Infrastructure.Migrations
                             b1.Property<Guid>("BookingId")
                                 .HasColumnType("uuid")
                                 .HasColumnName("id");
+
+                            b1.Property<DateOnly>("End")
+                                .HasColumnType("date")
+                                .HasColumnName("duration_end");
+
+                            b1.Property<DateOnly>("Start")
+                                .HasColumnType("date")
+                                .HasColumnName("duration_start");
 
                             b1.HasKey("BookingId");
 

@@ -57,7 +57,10 @@ internal sealed class SearchApartmentsQueryHandler
             )
             """;
 
-        var apartments = await connection
+        IEnumerable<ApartmentResponse> apartments = new List<ApartmentResponse>();
+        try
+        {
+            apartments = await connection
             .QueryAsync<ApartmentResponse, AddressResponse, ApartmentResponse>(
                 sql,
                 (apartment, address) =>
@@ -74,6 +77,13 @@ internal sealed class SearchApartmentsQueryHandler
                 },
                 splitOn: "Country");
 
+        }
+        catch (Exception ex)
+        {
+            Exception t = ex;
+            throw;
+        }
+        
         return apartments.ToList();
     }
 }
